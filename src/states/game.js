@@ -29,12 +29,12 @@ class Game extends Phaser.State {
     this.ball = new Ball(this.game);
     this.bricks = this.game.add.group();
 
-    // Fonction niveau
+
     for (var y = 0; y < 8; y++) {
-      for (var x = 0; x < 20; x++) {
-        var brick = new Brick(this.game, /*decalage coté*/ 420 + (x * 52)/*espacement entre les briques*/, 100 + (y * 20));
+      for (var x = 0; x < 17; x++) {
+        var brick = new Brick(this.game, 500 + (x * 40), 100 + (y * 42));
         var a = Math.floor(Math.random() * 11);
-          if (a >= 3) {
+          if (a >= 2) {
             this.bricks.add(brick);
             console.log(a);
           }
