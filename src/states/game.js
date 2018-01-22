@@ -20,8 +20,8 @@ class Game extends Phaser.State {
     //setup UI
     this.lives = 3;
     this.score = 0;
-    this.livesText = this.game.add.text(30, 30, 'lives: '+this.lives, { font: "20px Arial", fill: "#ffffff", align: "left" });
-    this.scoreText = this.game.add.text(30, 60, 'score: '+this.score, { font: "20px Arial", fill: "#ffffff", align: "left" });
+    this.livesText = this.game.add.text(30, 30, 'lives: '+this.lives, { font: "20px Arial", fill: "#ffffff", align: "right" });
+    this.scoreText = this.game.add.text(30, 60, 'score: '+this.score, { font: "20px Arial", fill: "#ffffff", align: "right" });
     //set up click listeners
     this.game.input.onDown.add(this.shoot, this);
 
@@ -30,7 +30,7 @@ class Game extends Phaser.State {
     this.ball = new Ball(this.game);
     this.bricks = this.game.add.group();
 
-    for (var y = 0; y < 6; y++)
+    for (var y = 0; y < 5; y++)
     {
       for (var x = 0; x < 17; x++)
       {
