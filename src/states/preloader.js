@@ -36,7 +36,7 @@ class Preloader extends Phaser.State {
     this.game.load.image('brick_3','assets/brick3.png');
     this.game.load.image('brick_4','assets/brick4.png');
     this.game.load.image('brick_5','assets/brick5.png');
-    this.game.load.image('bg_starfield','assets/starfield.jpg');
+    this.game.load.image('bg_starfield','assets/starfield2.jpg');
 
     this.game.input.keyboard.addKeyCapture([
       Phaser.Keyboard.LEFT,

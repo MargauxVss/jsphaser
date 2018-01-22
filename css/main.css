@@ -4,11 +4,7 @@ body {
   margin: 0;
   overflow: hidden;
 }
-
 canvas {
   display: block;
   cursor: none;
-  width: 500px;
-  height: 500px;
-  float: right;
 }

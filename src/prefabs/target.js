@@ -34,8 +34,8 @@ class Target extends Phaser.Sprite {
 
   changeDirection() {
     var spd = 400;
-    this.body.velocity.y = Math.random() * spd*2 - spd;
-    this.body.velocity.x = Math.random() * spd*2 - spd;
+    this.body.velocity.y = Math.random() * spd*50 - spd;
+    this.body.velocity.x = Math.random() * spd*50 - spd;
 
     this.game.time.events.add(Phaser.Timer.SECOND * 0.25, this.changeDirection, this);
   }

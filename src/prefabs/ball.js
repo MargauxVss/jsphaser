@@ -6,7 +6,7 @@ class Ball extends Phaser.Sprite {
     super(game, x, y, 'ball', frame);
 
     this.stateBall = "toPaddle";
-    this.anchor.setTo(0.7, 0.7);
+    this.anchor.setTo(0.5, 0.5);
 
     // setup physics properties
     if (this.game.physics.arcade){
