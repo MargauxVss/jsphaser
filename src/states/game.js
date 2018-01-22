@@ -30,9 +30,9 @@ class Game extends Phaser.State {
     this.ball = new Ball(this.game);
     this.bricks = this.game.add.group();
 
-    for (var y = 0; y < 4; y++)
+    for (var y = 0; y < 6; y++)
     {
-      for (var x = 0; x < 15; x++)
+      for (var x = 0; x < 17; x++)
       {
         var brick = new Brick(this.game, 120 + (x * 36), 100 + (y * 52));
         this.bricks.add(brick);
