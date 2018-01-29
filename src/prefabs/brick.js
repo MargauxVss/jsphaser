@@ -1,9 +1,9 @@
-var color = "brick_0";
 // Documentation for Phaser's (2.6.2) sprites:: phaser.io/docs/2.6.2/Phaser.Sprite.html
 class Brick extends Phaser.Sprite {
 
   // initialization code in the constructor
-  constructor(game, x, y, frame) {
+  constructor(game, x, y, frame, life) {
+      var color = "brick_"+life;
     super(game, x, y, color, frame);
 
     this.anchor.setTo(0.5, 0.5);
@@ -22,6 +22,7 @@ class Brick extends Phaser.Sprite {
 
   update() {
 
+    this.loadTexture('brick_4');
   }
 
 }

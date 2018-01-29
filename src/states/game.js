@@ -18,7 +18,6 @@ class Game extends Phaser.State {
 
     //setup UI
     this.lives = 3;
-    this.level = 0;
     this.score = 0;
     this.livesText = this.game.add.text(30, 30, 'lives: '+this.lives, { font: "30px Arial", fill: "#ffffff", align: "left" });
     this.scoreText = this.game.add.text(30, 60, 'score: '+this.score, { font: "30px Arial", fill: "#ff624f", align: "right" });
@@ -33,7 +32,7 @@ class Game extends Phaser.State {
 
     for (var y = 0; y < 8; y++) {
       for (var x = 0; x < 17; x++) {
-        var brick = new Brick(this.game, 480 + (x * 40), 100 + (y * 42));
+        var brick = new Brick(this.game, 480 + (x * 40), 100 + (y * 42), null, 0);
         var a = Math.floor(Math.random() * 11);
           if (a >= 2) {
             this.bricks.add(brick);
@@ -42,7 +41,6 @@ class Game extends Phaser.State {
       }
     }
 
-    this.createLevel(this.level);
     this.game.add.existing(this.paddle);
     this.game.add.existing(this.ball);
     this.game.add.existing(this.bricks);
@@ -53,11 +51,6 @@ class Game extends Phaser.State {
     this.ball.events.onOutOfBounds.add(this.ballLost, this);
   }
 
-
-  createLevel(index){
-
-
-  }
 
 
   shoot(click){
@@ -82,11 +75,7 @@ class Game extends Phaser.State {
     this.game.physics.arcade.collide(this.ball, this.paddle, this.ballHitPaddle, null, this);
     this.game.physics.arcade.collide(this.ball, this.bricks, this.ballHitBrick, null, this);
 
-    _brick.vie -= 1;
 
-    if (_brick.vie ==0){
-        _brick.kill();
-      }
   }
 
 
