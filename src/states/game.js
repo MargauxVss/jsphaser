@@ -18,9 +18,10 @@ class Game extends Phaser.State {
 
     //setup UI
     this.lives = 3;
+    this.level = 0;
     this.score = 0;
     this.livesText = this.game.add.text(30, 30, 'lives: '+this.lives, { font: "30px Arial", fill: "#ffffff", align: "left" });
-    this.scoreText = this.game.add.text(30, 60, 'score: '+this.score, { font: "30px Arial", fill: "#ff624f", align: "rigth" });
+    this.scoreText = this.game.add.text(30, 60, 'score: '+this.score, { font: "30px Arial", fill: "#ff624f", align: "right" });
     //set up click listeners
     this.game.input.onDown.add(this.shoot, this);
 
@@ -41,6 +42,7 @@ class Game extends Phaser.State {
       }
     }
 
+    this.createLevel(this.level);
     this.game.add.existing(this.paddle);
     this.game.add.existing(this.ball);
     this.game.add.existing(this.bricks);
@@ -50,6 +52,13 @@ class Game extends Phaser.State {
     this.game.physics.enable(this.ball, Phaser.Physics.ARCADE);
     this.ball.events.onOutOfBounds.add(this.ballLost, this);
   }
+
+
+  createLevel(index){
+
+
+  }
+
 
   shoot(click){
 
@@ -79,8 +88,6 @@ class Game extends Phaser.State {
         _brick.kill();
       }
   }
-
-
 
 
   endGame() {
