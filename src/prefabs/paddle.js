@@ -21,7 +21,7 @@ class Paddle extends Phaser.Sprite {
   }
 
   update() {
-    var speed = 10;
+    var speed = 20;
     if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
     {
       this.x = this.x - speed;

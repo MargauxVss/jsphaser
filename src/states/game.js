@@ -16,12 +16,11 @@ class Game extends Phaser.State {
     this.background.height = this.game.world.height;
     this.background.width = this.game.world.width;
 
-
     //setup UI
     this.lives = 3;
     this.score = 0;
-    this.livesText = this.game.add.text(30, 30, 'lives: '+this.lives, { font: "20px Arial", fill: "#ffffff", align: "left" });
-    this.scoreText = this.game.add.text(30, 60, 'score: '+this.score, { font: "20px Arial", fill: "#ffffff", align: "left" });
+    this.livesText = this.game.add.text(30, 30, 'lives: '+this.lives, { font: "30px Arial", fill: "#ffffff", align: "left" });
+    this.scoreText = this.game.add.text(30, 60, 'score: '+this.score, { font: "30px Arial", fill: "#ff624f", align: "rigth" });
     //set up click listeners
     this.game.input.onDown.add(this.shoot, this);
 
@@ -30,12 +29,15 @@ class Game extends Phaser.State {
     this.ball = new Ball(this.game);
     this.bricks = this.game.add.group();
 
-    for (var y = 0; y < 4; y++)
-    {
-      for (var x = 0; x < 15; x++)
-      {
-        var brick = new Brick(this.game, 120 + (x * 36), 100 + (y * 52));
-        this.bricks.add(brick);
+
+    for (var y = 0; y < 8; y++) {
+      for (var x = 0; x < 17; x++) {
+        var brick = new Brick(this.game, 480 + (x * 40), 100 + (y * 42));
+        var a = Math.floor(Math.random() * 11);
+          if (a >= 2) {
+            this.bricks.add(brick);
+            console.log(a);
+          }
       }
     }
 
@@ -55,8 +57,8 @@ class Game extends Phaser.State {
 
   releaseBall(ball){
     ball.stateBall = "released";
-    ball.body.velocity.y = -300;
-    ball.body.velocity.x = -75;
+    ball.body.velocity.y = -450;
+    ball.body.velocity.x = -150;
   }
 
   update() {
@@ -70,7 +72,16 @@ class Game extends Phaser.State {
     }
     this.game.physics.arcade.collide(this.ball, this.paddle, this.ballHitPaddle, null, this);
     this.game.physics.arcade.collide(this.ball, this.bricks, this.ballHitBrick, null, this);
+
+    _brick.vie -= 1;
+
+    if (_brick.vie ==0){
+        _brick.kill();
+      }
   }
+
+
+
 
   endGame() {
     this.game.state.start('gameover');
@@ -119,11 +130,17 @@ class Game extends Phaser.State {
 
   ballHitBrick (_ball, _brick) {
 
-    _brick.kill();
+
 
     this.score += 10;
 
     this.scoreText.text = 'score: ' + this.score;
+
+    _brick.vie -= 1;
+
+    if (_brick.vie ==0){
+        _brick.kill();
+    }
 
     //  Are they any bricks left?
     if (this.bricks.countLiving() == 0)
@@ -142,7 +159,7 @@ class Game extends Phaser.State {
     }
 
   }
-
+  
 }
 
 export default Game;
